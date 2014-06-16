@@ -1,3 +1,10 @@
+# This is just an example database.yml file. You shouldn't put your real
+# database.yml file in source control.
+#
+# Run 'cp $APP_ROOT/config/database.yml.example $APP_ROOT/config/database.yml'
+# to create your database.yml file. Fill in the data for each database
+# configuration.
+
 # PostgreSQL. Versions 8.2 and up are supported.
 #
 # Install the pg driver:
