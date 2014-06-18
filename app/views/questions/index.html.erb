@@ -9,13 +9,18 @@
       <%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %>
       <ul>
         <% Answer.where(:question_id => question.id).each do |answer| %>
-          <li><%= answer.answer %></li>
+          <li>
+            <%= answer.answer %>
+          </li>
         <% end %>
+        <li>
+          <%= link_to('Add Answer', 'answers/new?question_id=' + question.id.to_s) %>
+        </li>
       </ul>
     </li>
   <% end %>
+  <li>
+    <%= link_to 'Add Question', new_question_path %>
+  </li>
 </ul>
 
-<br>
-
-<%= link_to 'New Question', new_question_path %>
