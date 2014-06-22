@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
 
   def authenticate
     authenticate_or_request_with_http_basic('asdf') do |user, pass|
-      puts "qwer"
       pass_sha1 = Digest::SHA1.hexdigest(pass)
       user == 'admin' && pass_sha1 == 'd033e22ae348aeb5660fc2140aec35850c4da997'
     end
