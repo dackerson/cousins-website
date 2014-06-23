@@ -26,6 +26,7 @@ class ProgramsController < ApplicationController
   # POST /programs.json
   def create
     @program = Program.new(program_params)
+    @program.answers = Answer.where(id: params["answer"]["answer_ids"])
 
     respond_to do |format|
       if @program.save
