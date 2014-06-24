@@ -15,5 +15,22 @@
   <%= @program.website %>
 </p>
 
+<ul>
+  <% Question.all.each do |question| %>
+    <li>
+      <%= question.question %>
+      <ul>
+        <% question.answers.each do |answer| %>
+          <li>
+          <%= content_tag(:div, class: ('selected' if @program.answers.include? answer)) do %>
+              <%= answer.answer %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </li>
+  <% end %>
+</ul>
+
 <%= link_to 'Edit', edit_program_path(@program) %> |
 <%= link_to 'Back', programs_path %>
