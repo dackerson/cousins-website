@@ -1,4 +1,9 @@
 CousinsWebsite::Application.routes.draw do
+
+  root 'programs#search'
+
+  get '/search' => 'programs#search'
+
   resources :programs
 
   resources :answers

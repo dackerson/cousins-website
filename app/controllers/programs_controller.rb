@@ -1,11 +1,20 @@
 class ProgramsController < ApplicationController
-  before_action :authenticate, except: [:new, :index]
+  before_action :authenticate, except: [:search]
   before_action :set_program, only: [:show, :edit, :update, :destroy]
 
   # GET /programs
   # GET /programs.json
   def index
     @programs = Program.all
+  end
+
+  def search
+    @programs = Program.all
+    answer_ids = []
+    if params.include? 'answer'
+      answer_ids = params['answer']['answer_ids']
+    end
+    @answers = Answer.where(id: answer_ids)
   end
 
   # GET /programs/1
@@ -26,7 +35,12 @@ class ProgramsController < ApplicationController
   # POST /programs.json
   def create
     @program = Program.new(program_params)
-    @program.answers = Answer.where(id: params["answer"]["answer_ids"])
+
+    answer_ids = []
+    if params.include? 'answer'
+      answer_ids = params['answer']['answer_ids']
+    end
+    @program.answers = Answer.where(id: answer_ids)
 
     respond_to do |format|
       if @program.save

@@ -1,0 +1,21 @@
+<h1>Search</h1>
+
+<%= form_tag '/search', :method => :get do %>
+<div class="field">
+  <ul>
+    <% Question.all.each do |question| %>
+      <li>
+      <%= label :question, question.question %>
+      <ul>
+        <%= collection_check_boxes :answer, :answer_ids, question.answers, :id, :answer do |b| %>
+          <li>
+          <%= b.label(:"data-value" => b.value) { b.check_box(checked: (@answers.include? b.value)) + b.text } %>
+          </li>
+        <% end %>
+      </ul>
+      </li>
+    <% end %>
+  </ul>
+</div>
+<%= submit_tag 'Search' %>
+<% end %>
