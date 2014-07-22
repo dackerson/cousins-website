@@ -7,9 +7,9 @@
       <li>
       <%= label :question, question.question %>
       <ul>
-        <%= collection_check_boxes :answer, :answer_ids, question.answers, :id, :answer do |b| %>
+        <%= collection_check_boxes :question, question.id, question.answers, :id, :answer, :include_hidden => false do |b| %>
           <li>
-          <%= b.label(:"data-value" => b.value) { b.check_box(checked: (@answers.include? b.value)) + b.text } %>
+            <%= b.label(:"data-value" => b.value) { b.check_box(checked: (@answer_ids.include? b.value)) + b.text } %>
           </li>
         <% end %>
       </ul>

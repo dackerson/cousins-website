@@ -10,11 +10,16 @@ class ProgramsController < ApplicationController
 
   def search
     @programs = Program.all
+    @answer_ids = []
+    @question_ids = []
     answer_ids = []
-    if params.include? 'answer'
-      answer_ids = params['answer']['answer_ids']
+    if params.include? 'question'
+      params['question'].each_pair do |q_id, a_ids|
+        @question_ids << q_id
+        @answer_ids += a_ids.reject &:empty?
+      end
     end
-    @answers = Answer.where(id: answer_ids)
+    @answer_ids.map! &:to_i
   end
 
   # GET /programs/1
@@ -37,10 +42,17 @@ class ProgramsController < ApplicationController
     @program = Program.new(program_params)
 
     answer_ids = []
-    if params.include? 'answer'
-      answer_ids = params['answer']['answer_ids']
+    question_ids = []
+    if params.include? 'question'
+      params['question'].each_pair do |q_id, a_ids|
+        question_ids << q_id
+        answer_ids += a_ids.reject &:empty?
+      end
+      answer_ids.map! &:to_i
+      question_ids.map! &:to_i
     end
-    @program.answers = Answer.where(id: answer_ids)
+    @program.questions = Question.find(question_ids)
+    @program.answers = Answer.find(answer_ids)
 
     respond_to do |format|
       if @program.save
