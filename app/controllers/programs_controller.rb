@@ -9,17 +9,32 @@ class ProgramsController < ApplicationController
   end
 
   def search
-    @programs = Program.all
     @answer_ids = []
     @question_ids = []
-    answer_ids = []
     if params.include? 'question'
       params['question'].each_pair do |q_id, a_ids|
-        @question_ids << q_id
+        @question_ids << q_id.to_i
         @answer_ids += a_ids.reject &:empty?
       end
     end
     @answer_ids.map! &:to_i
+
+    @programs = []
+    Program.all.each do |program|
+      search_matches = true
+      Question.all.each do |question|
+        if @question_ids.include? question.id and program.question_ids.include? question.id
+          Answer.all.each do |answer|
+            if @answer_ids.include? answer.id and not program.answer_ids.include? answer.id
+              search_matches = false
+            end
+          end
+        end
+      end
+      if search_matches
+        @programs << program
+      end
+    end
   end
 
   # GET /programs/1
@@ -45,7 +60,7 @@ class ProgramsController < ApplicationController
     question_ids = []
     if params.include? 'question'
       params['question'].each_pair do |q_id, a_ids|
-        question_ids << q_id
+        question_ids << q_id.to_i
         answer_ids += a_ids.reject &:empty?
       end
       answer_ids.map! &:to_i

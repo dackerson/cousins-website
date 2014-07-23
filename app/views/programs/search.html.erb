@@ -19,3 +19,22 @@
 </div>
 <%= submit_tag 'Search' %>
 <% end %>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Desc</th>
+      <th>Website</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @programs.each do |program| %>
+      <tr>
+        <td><%= program.name %></td>
+        <td><%= program.desc %></td>
+        <td><%= program.website %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
