@@ -1,0 +1,274 @@
+body{
+    overflow-x: hidden;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: url('background.png');
+}
+
+.wrapper{
+    margin-top: 100px;
+}
+#banner{
+    text-align: center;
+    width: 100%;
+}
+
+#banner-img{
+    /*margin-top: 50px;*/
+    width: 100%; 
+    height: auto;
+}
+
+
+#site-title{
+    color: white;
+    font-size: 2em;
+    margin-left: 50px;
+}
+
+.ul-home-menu{
+    padding-right: 50px;
+}
+
+.ul-home-menu > li > a{
+    color: white!important;
+}
+
+.ul-home-menu li ul li{
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.ul-home-menu li ul li a{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.ul-home-menu li ul li a:hover{
+    background-color: #f7ae11;    
+    color: white;
+}
+.btn-gray{
+    background: -moz-linear-gradient(top, #fff 40%,#eee 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(40%,#fff),color-stop(100%,#eee)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #fff 40%,#eee 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #fff 40%,#eee 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #fff 40%,#eee 100%); /* IE10+ */
+    background: linear-gradient(top, #fff 40%,#eee 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff', endColorstr='#eee',GradientType=0 ); /* IE6*/
+
+    text-align: center;
+    font-size: 1.1em;
+    border-radius: 5px;
+    border:1px solid #bbb;
+}
+.form-group{
+    margin-top: 30px;
+}
+
+.btn-green{
+    color: white;
+    background: -moz-linear-gradient(top, #66c666 45%,#469746 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(45%,#66c666),color-stop(100%,#469746)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #66c666 45%,#469746 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #66c666 45%,#469746 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #66c666 45%,#469746 100%); /* IE10+ */
+    background: linear-gradient(top, #66c666 45%,#469746 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#66c666', endColorstr='#469746',GradientType=0 ); 
+}
+
+.getlisted-general-info input,.getlisted-general-info textarea, .custom{
+    background: -moz-linear-gradient(top, #fff 40%,#eee 100%)!important; /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(40%,#fff),color-stop(100%,#eee))!important; /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #fff 40%,#eee 100%)!important; /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #fff 40%,#eee 100%)!important; /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #fff 40%,#eee 100%)!important; /* IE10+ */
+    background: linear-gradient(top, #fff 40%,#eee 100%)!important; /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff', endColorstr='#eee',GradientType=0 )!important; /* IE6*/
+}
+
+.btn-orange{
+    color: white;
+    background-color: #f7ae11;
+}
+
+.answer-box{
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    padding: 7px 10px 10px 10px;
+    margin-bottom: 40px;
+    background-color: white;
+}
+
+.answer-title{
+    font-size: 1.5em;
+    color: #66c666;
+}
+
+.survey-choice-box{
+    border: 2px solid #f7ae11;
+    margin-top: 1px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+    display: none;
+    position: absolute;
+    width: 100%;
+    /*width: 100px;*/
+    z-index: 5;
+}
+
+.answer-details-box{
+    margin-left: 0px;
+    margin-top: 2px;
+    background-color: #fafafa;
+    z-index: 5;
+    position: absolute;
+    border: 1px solid #f7ae11;
+    border-radius: 4px;
+    display: none;
+    /*width: 350px;*/
+}
+.btn-survey-answer{
+    text-align: left;
+    padding-left: 25px;
+}
+// Side survey specs
+
+#side-survey{
+    position: fixed;
+    background-color:white;
+    padding: 10px;
+    box-shadow: 0px 5px 5px 5px #bbb;
+    top: 50px;
+    z-index: 10;
+}
+
+.custom{
+    color: black;    
+    border: 1px solid #bbb;
+    text-align: center;
+}
+
+*::-webkit-input-placeholder {
+    color: black!important;
+    text-align: center;
+}
+*:-moz-placeholder {
+    /* FF 4-18 */
+    color:black!important;
+    text-align: center;
+}
+*::-moz-placeholder {
+    /* FF 19+ */
+    color:black!important;
+    text-align: center;
+}
+*:-ms-input-placeholder {
+    /* IE 10+ */
+    color: black!important;
+    text-align: center;
+}
+
+.intro-text{
+    padding:  10px 40px;
+    line-height: 28px;
+    font-size: 1.3em;
+    text-align: justify;
+    color: white;
+}
+
+#intro-title-green{
+    font-size: 1.8em;
+    color: #66c666;
+    margin-bottom: 40px;    
+}
+
+#thanks{
+    font-size: 1.8em;
+    color: white;
+    margin-bottom: 40px;    
+}
+
+#intro-title-orange{
+    font-size: 1.8em;
+    color: #f7ae11;
+    margin-bottom: 40px;    
+}
+
+.active-label{
+    background-color: #f7ae11!important;
+    color: white!important;
+}
+.active-label-radio{
+    background-color: #f7ae11!important;
+    color: white!important;
+}
+
+.label-choice{
+    background-color: #eee!important;
+}
+
+.label-choice-radio{
+    background-color: #eee!important;
+}
+
+
+
+@media screen and (min-width: 451px) {
+    #side-survey{
+        width: 400px;
+        position: absolute;
+        background-color:white;
+        padding: 10px;
+        border: 1px solid #aaa;
+        top: 50px;
+        z-index: 10;
+        display: none;
+        font-size: 1em;
+    }
+    #home-survey button,#home-survey label,#side-survey button,#side-survey label,.custom{
+        font-size:0.9em;
+    }
+    
+    #site-title{
+        display: initial;
+    }
+    #site-title-img{
+        display: none;
+    }
+    #side-survey-btn{
+        position: absolute;left:290px;margin-top: 10px
+    }
+}
+
+@media screen and (max-width: 450px) {
+    #side-survey{
+        width: 300px;
+        position: absolute;
+        background-color:white;
+        padding: 10px;
+        border: 1px solid #aaa;
+        top: 50px;
+        z-index: 10;
+        display: none;
+        font-size: 0.8em;
+    }
+    
+    #home-survey button,#home-survey label,#side-survey button,#side-survey label,.custom{
+        font-size:0.8em!important;
+    }
+    
+    #site-title{
+        display: none;
+    }
+    #site-title-img{
+        display: initial;
+    }
+    #side-survey-btn{
+        position: absolute;left:65px;margin-top: 15px
+    }
+    #menu-icon{
+        margin-top: 15px
+    }
+}

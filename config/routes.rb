@@ -1,6 +1,6 @@
 CousinsWebsite::Application.routes.draw do
 
-  root 'programs#search'
+  root 'pages#home'
 
   get '/search' => 'programs#search'
 
