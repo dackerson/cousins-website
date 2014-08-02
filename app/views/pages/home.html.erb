@@ -1,0 +1,52 @@
+<div class="container-fluid wrapper">    
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1" style="margin-top: 10px;">
+      <div class="row">
+        <div class="col-md-6 intro-text paddings">
+          <p id="intro-title-green">Intro Text</p>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+          when an unknown printer took a galley of type and scrambled it to make a 
+          type specimen book. It has survived not only five centuries, but also the leap 
+          into electronic typesetting, remaining essentially unchanged. It was popularised 
+          in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+          </p>
+          <br/>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+          when an unknown printer took a galley of type and scrambled it to make a 
+          type specimen book. It has survived not only five centuries, but also the leap 
+          into electronic typesetting, remaining essentially unchanged. It was popularised 
+          </p>
+        </div>
+
+        <div class="col-md-6 intro-text"  id="home-survey">
+          <p id="intro-title-orange">Get started</p>
+          <%= form_tag '/search', :method => :get do %>
+            <% Question.all.each do |question| %>
+              <div class="form-group">
+                <div class="row">
+                  <button type="button" class="btn btn-gray btn-lg btn-block survey-question-inactive"><%= question.question %></button>
+                  <div class="col-md-12">
+                    <div class="row survey-choice-box" >
+                      <div class="" data-toggle="buttons">
+                        <%= collection_check_boxes :question, question.id, question.answers, :id, :answer, include_hidden: false do |b| %>
+                          <%= b.label(:"data-value" => b.value, class: "btn-lg btn-block btn label-choice btn-default" ) do %>
+                            <%= b.check_box + b.text %>
+                          <% end %>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+              </div>
+            <% end %>
+            <%= submit_tag 'Search' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
