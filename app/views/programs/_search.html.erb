@@ -1,0 +1,32 @@
+<div id="side-survey">
+  <%= form_tag '/search', :method => :get do %>
+    <% Question.all.each do |question| %>
+      <div class="form-group">
+        <button type="button"  class="btn btn-gray btn-lg btn-block survey-question-inactive"><%= question.question %></button>
+        <div class="col-md-12">
+          <div class="row survey-choice-box" >
+            <div class="" data-toggle="buttons">
+              <%= collection_check_boxes :question, question.id, question.answers, :id, :answer, :include_hidden => false do |b| %>
+                <%
+                  label_class = "btn-block btn btn-default label-choice"
+                  check_box_checked = false
+                  unless @answer_ids.nil?
+                    if @answer_ids.include? b.value
+                      label_class = "btn-block btn btn-default active-label label-choice-active"
+                      check_box_checked = true
+                    end
+                  end %>
+                <%= b.label(:"data-value" => b.value, class: label_class) do %>
+                  <%= b.check_box(checked: check_box_checked) + b.text %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <%= submit_tag 'Search' %>
+    </div>
+  <% end %>
+</div>
