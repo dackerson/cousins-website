@@ -4,6 +4,8 @@ CousinsWebsite::Application.routes.draw do
 
   get '/search' => 'programs#search'
 
+  get '/submit' => 'programs#submit'
+
   resources :programs
 
   resources :answers

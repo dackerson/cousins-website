@@ -1,5 +1,5 @@
 class ProgramsController < ApplicationController
-  before_action :authenticate, except: [:search]
+  before_action :authenticate, except: [:create, :search, :submit]
   before_action :set_program, only: [:show, :edit, :update, :destroy]
 
   # GET /programs
@@ -37,6 +37,11 @@ class ProgramsController < ApplicationController
     end
   end
 
+  def submit
+    new
+    render 'new'
+  end
+
   # GET /programs/1
   # GET /programs/1.json
   def show
@@ -71,8 +76,8 @@ class ProgramsController < ApplicationController
 
     respond_to do |format|
       if @program.save
-        format.html { redirect_to @program, notice: 'Program was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @program }
+        format.html { redirect_to root_path, notice: 'Program was successfully created.' }
+        format.json { render action: 'pages#home', status: :created, location: @program }
       else
         format.html { render action: 'new' }
         format.json { render json: @program.errors, status: :unprocessable_entity }
