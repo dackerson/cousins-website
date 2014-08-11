@@ -18,13 +18,13 @@
           <div class="col-md-6 intro-text getlisted-general-info">
             <p id="intro-title-green">General information</p>
             <div class="form-group">
-              <%= f.text_field :name, placeholder: 'Program/Organization URL' %>
+              <%= f.text_field :name, class: 'form-control input-lg', placeholder: 'Program/Organization URL' %>
             </div>
             <div class="form-group">
-              <%= f.text_field :website, placeholder: 'Website URL' %>
+              <%= f.text_field :website, class: 'form-control input-lg', placeholder: 'Website URL' %>
             </div>
             <div class="form-group">
-              <%= f.text_field :desc, placeholder: 'Description' %>
+              <%= f.text_field :desc, class: 'form-control input-lg', placeholder: 'Description' %>
             </div>
           </div>
           <div class="col-md-6 intro-text"  id="home-survey">
@@ -47,8 +47,10 @@
                 </div>
               </div>
             <% end %>
-            <div class="actions">
-              <%= f.submit %>
+            <div class="form-group">
+              <div class="row">
+                <%= f.submit class: "btn btn-green btn-success btn-lg" %>
+              </div>
             </div>
           </div>
         <% end %>
