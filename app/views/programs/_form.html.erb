@@ -26,6 +26,12 @@
             <div class="form-group">
               <%= f.text_field :desc, class: 'form-control input-lg', placeholder: 'Description' %>
             </div>
+            <% if action_name == 'edit' %>
+              <div class="form-group">
+                <%= f.label :published %>
+                <%= f.check_box :published, class: 'form-control input-lg' %>
+              </div>
+            <% end %>
           </div>
           <div class="col-md-6 intro-text"  id="home-survey">
             <p id="intro-title-orange">Choose your options</p>

@@ -20,7 +20,7 @@ class ProgramsController < ApplicationController
     @answer_ids.map! &:to_i
 
     @programs = []
-    Program.all.each do |program|
+    Program.where(published: true).each do |program|
       search_matches = true
       Question.all.each do |question|
         if @question_ids.include? question.id and program.question_ids.include? question.id
