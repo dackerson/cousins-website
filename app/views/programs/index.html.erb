@@ -9,6 +9,7 @@
       <th></th>
       <th></th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -18,6 +19,7 @@
         <td><%= program.name %></td>
         <td><%= program.desc %></td>
         <td><%= program.website %></td>
+        <td><button class="publish-toggle" data-id="<%= program.id.to_s %>"><%= publish_button_text program %></button></td>
         <td><%= link_to 'Show', program %></td>
         <td><%= link_to 'Edit', edit_program_path(program) %></td>
         <td><%= link_to 'Destroy', program, method: :delete, data: { confirm: 'Are you sure?' } %></td>

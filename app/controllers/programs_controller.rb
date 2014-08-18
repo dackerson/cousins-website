@@ -1,6 +1,6 @@
 class ProgramsController < ApplicationController
   before_action :authenticate, except: [:create, :search, :submit]
-  before_action :set_program, only: [:show, :edit, :update, :destroy]
+  before_action :set_program, only: [:show, :edit, :update, :destroy, :toggle_published]
 
   # GET /programs
   # GET /programs.json
@@ -33,6 +33,15 @@ class ProgramsController < ApplicationController
       end
       if search_matches
         @programs << program
+      end
+    end
+  end
+
+  def toggle_published
+    @program.published = !@program.published
+    respond_to do |format|
+      if @program.save
+        format.json { render json: { publish_button_text: view_context.publish_button_text(@program) }, status: :ok, layout: false }
       end
     end
   end

@@ -8,6 +8,8 @@ CousinsWebsite::Application.routes.draw do
 
   resources :programs
 
+  post '/programs/:id/toggle_published' => 'programs#toggle_published', defaults: { format: :json }
+
   resources :answers
 
   resources :questions
