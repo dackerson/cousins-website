@@ -6,6 +6,7 @@ class ProgramsController < ApplicationController
   # GET /programs.json
   def index
     @programs = Program.all
+    render layout: 'admin'
   end
 
   def search
@@ -54,6 +55,7 @@ class ProgramsController < ApplicationController
   # GET /programs/1
   # GET /programs/1.json
   def show
+    render layout: 'admin'
   end
 
   # GET /programs/new
@@ -63,6 +65,7 @@ class ProgramsController < ApplicationController
 
   # GET /programs/1/edit
   def edit
+    render layout: 'admin'
   end
 
   # POST /programs

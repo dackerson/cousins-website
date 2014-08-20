@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CousinsWebsite</title>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body style="background-image:image_path('background.png');">
+    <div class="navbar navbar-inverse navbar-fixed-top "  id="" style="" role="navigation">
+      <span class="navbar-brand" id="site-title">Cousin Website Admin</span>
+      <%= image_tag 'rsz_3home-img.png', class: "side-survey-btn-inactive", id: "side-survey-btn" %>
+      <!--img class="side-survey-btn-inactive" id="side-survey-btn" src="img/rsz_admin-menu.png" alt=""/-->
+    </div>
+
+    <%= yield %>
+
+  </body>
+</html>

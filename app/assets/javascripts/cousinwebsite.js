@@ -1,5 +1,14 @@
 $(document).ready(function() {
 
+    $(document).on("click", "label.yes", function() {
+        $(this).addClass("btn-success").removeClass("btn-default");
+        $(this).next().addClass("btn-default").removeClass("btn-danger");
+    });
+    $(document).on("click", "label.no", function() {
+        $(this).addClass("btn-danger").removeClass("btn-default");
+        $(this).prev().addClass("btn-default").removeClass("btn-success");
+    });
+    
     if ($("#side-survey").length === 0) {
         $("#side-survey-btn").hide();
     }
