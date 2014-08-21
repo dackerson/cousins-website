@@ -6,6 +6,8 @@ CousinsWebsite::Application.routes.draw do
 
   get '/submit' => 'programs#submit'
 
+  get '/admin' => 'pages#admin'
+
   resources :programs
 
   post '/programs/:id/toggle_published' => 'programs#toggle_published', defaults: { format: :json }

@@ -13,5 +13,4 @@
 //= require jquery-1.10.2
 //= require bootstrap
 //= require html5
-//= require cousinwebsite.js
-//= require_tree .
+//= require cousinwebsiteadmin.js
