@@ -1,33 +1,9 @@
-<h1>Listing programs</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Desc</th>
-      <th>Website</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @programs.each do |program| %>
-      <tr>
-        <td><%= program.name %></td>
-        <td><%= program.desc %></td>
-        <td><%= program.website %></td>
-        <td><button class="publish-toggle" data-id="<%= program.id.to_s %>"><%= publish_button_text program %></button></td>
-        <td><%= link_to 'Show', program %></td>
-        <td><%= link_to 'Edit', edit_program_path(program) %></td>
-        <td><%= link_to 'Destroy', program, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Program', new_program_path %>
+<%= render 'search' %>
+<div class="container-fluid wrapper">
+  <div class="row" style="padding-left: 30px;padding-right: 30px">
+    <div id='results' class="col-md-10 col-md-offset-1 ">
+      <%= render 'results' %>
+    </div>
+  </div>
+  <br/>
+</div>
