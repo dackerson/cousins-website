@@ -1,24 +1,8 @@
 <%= render 'search' %>
 <div class="container-fluid wrapper">
   <div class="row" style="padding-left: 30px;padding-right: 30px">
-    <div class="col-md-10 col-md-offset-1 ">
-      <% @programs.each do |program| %>
-        <div class="row">
-          <div class="col-md-3 col-md-offset-1 answer-box" style="">
-            <div class="row">
-              <div class="col-md-12">
-                <p class="answer-title"><%= program.name %></p><br/>
-              </div>
-            </div>
-            <button class="btn btn-orange answer-details-btn answer-details-btn-inactive">Details</button>
-            <div class="answer-details-box">
-              <div class="col-md-12">
-                <p><%= program.desc %></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% end %>
+    <div id='results' class="col-md-10 col-md-offset-1 ">
+      <%= render 'results' %>
     </div>
   </div>
   <br/>

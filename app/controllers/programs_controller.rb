@@ -1,12 +1,11 @@
 class ProgramsController < ApplicationController
-  before_action :authenticate, except: [:create, :search, :submit]
+  before_action :authenticate, except: [:index, :create, :search, :submit]
   before_action :set_program, only: [:show, :edit, :update, :destroy, :toggle_published]
 
   # GET /programs
   # GET /programs.json
   def index
     @programs = Program.all
-    render layout: 'admin'
   end
 
   def search
@@ -35,6 +34,10 @@ class ProgramsController < ApplicationController
       if search_matches
         @programs << program
       end
+    end
+
+    respond_to do |format|
+      format.html { render 'results', status: :ok }
     end
   end
 
