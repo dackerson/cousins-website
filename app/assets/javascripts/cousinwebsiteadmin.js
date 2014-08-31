@@ -1,12 +1,34 @@
 $(document).ready(function() {
 
     $(document).on("click", "label.publish", function() {
-        $(this).addClass("btn-success").removeClass("btn-default");
-        $(this).next().addClass("btn-default").removeClass("btn-danger");
+        var id = $(this).attr('data-id');
+        var elem = this;
+        var res = $.ajax({
+          headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
+          type: 'POST',
+          url: 'programs/' + id + '/toggle_published',
+          dataType: 'json',
+          data: { id: id },
+          success: function(data){
+            $(elem).addClass("btn-success").removeClass("btn-default");
+            $(elem).next().addClass("btn-default").removeClass("btn-danger");
+          }
+        });
     });
     $(document).on("click", "label.unpublish", function() {
-        $(this).addClass("btn-danger").removeClass("btn-default");
-        $(this).prev().addClass("btn-default").removeClass("btn-success");
+        var id = $(this).attr('data-id');
+        var elem = this;
+        var res = $.ajax({
+          headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
+          type: 'POST',
+          url: 'programs/' + id + '/toggle_published',
+          dataType: 'json',
+          data: { id: id },
+          success: function(data){
+            $(elem).addClass("btn-danger").removeClass("btn-default");
+            $(elem).prev().addClass("btn-default").removeClass("btn-success");
+          }
+        });
     });
     
 //  
