@@ -5,7 +5,7 @@ class ProgramsController < ApplicationController
   # GET /programs
   # GET /programs.json
   def index
-    @programs = Program.all
+    @programs = Program.where(published: true)
   end
 
   def search
@@ -37,7 +37,8 @@ class ProgramsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { render 'results', status: :ok }
+      format.html { render partial: 'results', status: :ok, layout: false }
+      format.js { render 'results' }
     end
   end
 

@@ -1,5 +1,5 @@
 <div id="side-survey">
-  <%= form_tag '/search', :method => :get do %>
+  <%= form_tag '/search', :method => :get, remote: true do %>
     <% Question.all.each do |question| %>
       <div class="form-group">
         <button type="button"  class="btn btn-gray btn-lg btn-block survey-question-inactive"><%= question.question %></button>
