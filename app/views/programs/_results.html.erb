@@ -1,16 +1,48 @@
 <% @programs.each do |program| %>
-  <div class="row">
-    <div class="col-md-3 col-md-offset-1 answer-box" style="">
+  <div class="panel panel-default" style="border-radius: 0px;">
+    <div class="panel-heading program-box" target="<%= "collapsePrgram" + program.id.to_s %>" style="border-radius: 0px;">
       <div class="row">
-        <div class="col-md-12">
-          <p class="answer-title"><%= program.name %></p><br/>
+        <div class="col-md-12 item-info">
+          <span class="item-title"><%= program.name %></span>
+          <div class="row" style="margin-top:4px;">
+            <div class="col-md-6">
+              <a class="btn-link" href="#">                                            
+                <%= image_tag 'rsz_website.png' %>
+                <%= program.website %>
+              </a>
+            </div>
+            <div class="col-md-6">
+              <span class="item-details">
+                <%= image_tag 'rsz_contact.png' %>
+                <%= program.contact_name %>
+              </span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <span class="item-details">
+                <%= image_tag 'rsz_phone.png' %>
+                <%= program.contact_phone %>
+              </span>
+            </div>
+            <div class="col-md-6">
+              <span class="item-details">
+                <%= image_tag 'rsz_email.png' %>
+                <%= program.contact_email %>
+              </span>
+            </div>
+          </div>
         </div>
+        <a class="btn btn-orange" data-toggle="collapse" 
+          data-parent="#accordion2" style="display:none"
+          href="<%= "#collapsePrgram" + program.id.to_s %>"></a>
       </div>
-      <button class="btn btn-orange answer-details-btn answer-details-btn-inactive">Details</button>
-      <div class="answer-details-box">
-        <div class="col-md-12">
-          <p><%= program.desc %></p>
-        </div>
+    </div>
+    <div id="<%= "collapsePrgram" + program.id.to_s %>" class="panel-collapse collapse">
+      <div class="panel-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life 
+        accusamus terry richardson ad squid. 3 wolf moon officia aute, 
+        non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt 
       </div>
     </div>
   </div>

@@ -61,12 +61,14 @@ $(document).ready(function() {
 
     $(document).on("click", "label.label-choice-active", function() {
         $(this).removeClass("active-label label-choice-active").addClass("label-choice");
-        $('#' + $(this).attr('for')).attr('checked', false);
+        // $('#' + $(this).attr('for')).attr('checked', 'checked');
+        $(this).children().attr("checked", false);
     });
 
-    $(document).on("click", ".label-choice", function() {
+    $(document).on("click", "label.label-choice", function() {
         $(this).addClass("active-label label-choice-active").removeClass("label-choice");
-        $('#' + $(this).attr('for')).attr('checked', true);
+        // $('#' + $(this).attr('for')).attr('checked', 'checked');
+        $(this).children().attr("checked", true);
     });
 
     $(document).on("click", ".label-choice-radio", function() {

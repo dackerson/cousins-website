@@ -1,76 +1,166 @@
 <div class="container wrapper"> 
-  <div class="panel-group" id="accordion">
-    <% @programs.each do |program| %>
-      <div class="panel panel-default" style="">
-        <div class="panel-heading" data-target="collapse-btn<%= program.id.to_s %>" style="padding-top: 8px!important; padding-bottom: 8px!important;background-color: white; color: #0099ff;">
-          <div class="row">
-            <div class="col-md-8 item-info">
-              <span class="item-title"><%= program.name %></span>
-              <div class="row" style="margin-top:4px;">
-                <div class="col-md-6">
-                  <a class="btn-link" href="#">
-                    <!--img src="img/rsz_website.png" alt=""/-->
-                    <%= image_tag 'rsz_website.png' %>
-                    <%= program.website %>
-                  </a>
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Nav tabs -->
+      <ul class="nav  nav-pills" role="tablist">
+        <li class="active"><a style="color:  #47A447;" href="#home" role="tab" data-toggle="tab">Published</a></li>
+        <li><a  style="color: red;" href="#profile" role="tab" data-toggle="tab">Unpublished</a></li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content" style="padding-top:5px;">
+        <div class="tab-pane active" id="home">
+          <div class="panel-group" id="accordion">
+            <% @programs.each do |program| %>
+              <div class="panel panel-default" style="">
+                <div class="panel-heading" data-target="collapse-btn<%= program.id.to_s %>" style="padding-top: 8px!important; padding-bottom: 8px!important;background-color: white; color: #0099ff;">
+                  <div class="row">
+                    <div class="col-md-8 item-info">
+                      <span class="item-title"><%= program.name %></span>
+                      <div class="row" style="margin-top:4px;">
+                        <div class="col-md-6">
+                          <a class="btn-link" href="#">
+                            <!--img src="img/rsz_website.png" alt=""/-->
+                            <%= image_tag 'rsz_website.png' %>
+                            <%= program.website %>
+                          </a>
+                        </div>
+                        <div class="col-md-6"><span class="item-details">
+                            <!--img src="img/rsz_conatct.png" alt=""/-->
+                            <%= image_tag 'rsz_contact.png' %>
+                            <%= program.contact_name %>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <span class="item-details">
+                            <!--img src="img/rsz_phone.png" alt=""/-->
+                            <%= image_tag 'rsz_phone.png' %>
+                            <%= program.contact_phone %>
+                          </span>
+                        </div>
+                        <div class="col-md-6">
+                          <span class="item-details">
+                            <!--img src="img/rsz_email.png" alt=""/-->
+                            <%= image_tag 'rsz_email.png' %>
+                            <%= program.contact_email %>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4 item-operation" style="margin-top:8px;">
+                      <div class="btn-group btn-group-justified" data-toggle="buttons">
+                        <!--button class="btn btn-default " data-id="<% program.id.to_s %>">Published</button-->
+                        <!--button class="btn btn-default no" data-id="<% program.id.to_s %>">Unpublished</button-->
+                        <%
+                          published_class = 'btn-default'
+                          unpublished_class = 'btn-default'
+                          if program.published
+                            published_class = 'btn-success'
+                          else
+                            unpublished_class = 'btn-danger'
+                          end
+                        %>
+                        <label class="btn publish <%= published_class %>" data-id="<%= program.id.to_s %>">
+                          Published
+                        </label>
+                        <label class="btn unpublish <%= unpublished_class %>" data-id="<%= program.id.to_s %>">
+                          Unpublished
+                        </label>
+                        <a class="btn btn-orange" data-toggle="collapse" 
+                          data-parent="#accordion" 
+                          href="#collapse<%= program.id.to_s %>">Description</a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-md-6"><span class="item-details">
-                    <!--img src="img/rsz_conatct.png" alt=""/-->
-                    <%= image_tag 'rsz_contact.png' %>
-                    <%= program.contact_name %>
-                  </span>
+                <div id="collapse<%= program.id.to_s %>" class="panel-collapse collapse">
+                  <div class="panel-body">
+                    <p class="item-desc"><%= program.desc %></p>
+                  </div>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <span class="item-details">
-                    <!--img src="img/rsz_phone.png" alt=""/-->
-                    <%= image_tag 'rsz_phone.png' %>
-                    <%= program.contact_phone %>
-                  </span>
-                </div>
-                <div class="col-md-6">
-                  <span class="item-details">
-                    <!--img src="img/rsz_email.png" alt=""/-->
-                    <%= image_tag 'rsz_email.png' %>
-                    <%= program.contact_email %>
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 item-operation" style="margin-top:8px;">
-              <div class="btn-group btn-group-justified" data-toggle="buttons">
-                <!--button class="btn btn-default " data-id="<% program.id.to_s %>">Published</button-->
-                <!--button class="btn btn-default no" data-id="<% program.id.to_s %>">Unpublished</button-->
-                <%
-                  published_class = 'btn-default'
-                  unpublished_class = 'btn-default'
-                  if program.published
-                    published_class = 'btn-success'
-                  else
-                    unpublished_class = 'btn-danger'
-                  end
-                %>
-                <label class="btn publish <%= published_class %>" data-id="<%= program.id.to_s %>">
-                  Published
-                </label>
-                <label class="btn unpublish <%= unpublished_class %>" data-id="<%= program.id.to_s %>">
-                  Unpublished
-                </label>
-                <a class="btn btn-orange" data-toggle="collapse" 
-                  data-parent="#accordion" 
-                  href="#collapse<%= program.id.to_s %>">Description</a>
-              </div>
-            </div>
+            <% end %>
           </div>
         </div>
-        <div id="collapse<%= program.id.to_s %>" class="panel-collapse collapse">
-          <div class="panel-body">
-            <p class="item-desc"><%= program.desc %></p>
+        <div class="tab-pane" id="profile">
+          <div class="panel-group" id="accordion2">
+            <% @programs.each do |program| %>
+              <div class="panel panel-default" style="">
+                <div class="panel-heading" data-target="collapse-btn<%= program.id.to_s %>" style="padding-top: 8px!important; padding-bottom: 8px!important;background-color: white; color: #0099ff;">
+                  <div class="row">
+                    <div class="col-md-8 item-info">
+                      <span class="item-title"><%= program.name %></span>
+                      <div class="row" style="margin-top:4px;">
+                        <div class="col-md-6">
+                          <a class="btn-link" href="#">
+                            <!--img src="img/rsz_website.png" alt=""/-->
+                            <%= image_tag 'rsz_website.png' %>
+                            <%= program.website %>
+                          </a>
+                        </div>
+                        <div class="col-md-6"><span class="item-details">
+                            <!--img src="img/rsz_conatct.png" alt=""/-->
+                            <%= image_tag 'rsz_contact.png' %>
+                            <%= program.contact_name %>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <span class="item-details">
+                            <!--img src="img/rsz_phone.png" alt=""/-->
+                            <%= image_tag 'rsz_phone.png' %>
+                            <%= program.contact_phone %>
+                          </span>
+                        </div>
+                        <div class="col-md-6">
+                          <span class="item-details">
+                            <!--img src="img/rsz_email.png" alt=""/-->
+                            <%= image_tag 'rsz_email.png' %>
+                            <%= program.contact_email %>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4 item-operation" style="margin-top:8px;">
+                      <div class="btn-group btn-group-justified" data-toggle="buttons">
+                        <!--button class="btn btn-default " data-id="<% program.id.to_s %>">Published</button-->
+                        <!--button class="btn btn-default no" data-id="<% program.id.to_s %>">Unpublished</button-->
+                        <%
+                          published_class = 'btn-default'
+                          unpublished_class = 'btn-default'
+                          if program.published
+                            published_class = 'btn-success'
+                          else
+                            unpublished_class = 'btn-danger'
+                          end
+                        %>
+                        <label class="btn publish <%= published_class %>" data-id="<%= program.id.to_s %>">
+                          Published
+                        </label>
+                        <label class="btn unpublish <%= unpublished_class %>" data-id="<%= program.id.to_s %>">
+                          Unpublished
+                        </label>
+                        <a class="btn btn-orange" data-toggle="collapse" 
+                          data-parent="#accordion" 
+                          href="#collapse<%= program.id.to_s %>">Description</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="collapse<%= program.id.to_s %>" class="panel-collapse collapse">
+                  <div class="panel-body">
+                    <p class="item-desc"><%= program.desc %></p>
+                  </div>
+                </div>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
-    <% end %>
+    </div>
   </div>
   <br/>
 </div>

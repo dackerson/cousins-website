@@ -1,30 +1,36 @@
 <div id="side-survey">
   <%= form_tag '/search', :method => :get, remote: true do %>
-    <% Question.all.each do |question| %>
-      <div class="form-group">
-        <button type="button"  class="btn btn-gray btn-lg btn-block survey-question-inactive"><%= question.question %></button>
-        <div class="col-md-12">
-          <div class="row survey-choice-box" >
-            <div class="" data-toggle="buttons">
-              <%= collection_check_boxes :question, question.id, question.answers, :id, :answer, :include_hidden => false do |b| %>
-                <%
-                  label_class = "btn-block btn btn-default label-choice"
-                  check_box_checked = false
-                  unless @answer_ids.nil?
-                    if @answer_ids.include? b.value
-                      label_class = "btn-block btn btn-default active-label label-choice-active"
-                      check_box_checked = true
-                    end
-                  end %>
-                <%= b.label(:"data-value" => b.value, class: label_class) do %>
-                  <%= b.check_box(checked: check_box_checked) + b.text %>
+    <div class="panel-group" id="accordion3">
+      <% Question.all.each do |question| %>
+        <div class="panel panel-default">
+          <div class="panel-heading survey-box" target="<%= "collapse" + question.id.to_s %>">
+            <a data-toggle="collapse" data-parent="#accordion3" href="<%= "#collapseSideSurvey" + question.id.to_s %>">
+              What are you looking for ?
+            </a>
+          </div>
+          <div id="<%= "collapseSideSurvey" + question.id.to_s %>" class="panel-collapse collapse in">
+            <div class="panel-body ">
+              <div class="" data-toggle="buttons">
+                <%= collection_check_boxes :question, question.id, question.answers, :id, :answer, :include_hidden => false do |b| %>
+                  <%
+                    label_class = "btn-block btn btn-default label-choice"
+                    check_box_checked = false
+                    unless @answer_ids.nil?
+                      if @answer_ids.include? b.value
+                        label_class = "btn-block btn btn-default active-label label-choice-active"
+                        check_box_checked = true
+                      end
+                    end %>
+                  <%= b.label(:"data-value" => b.value, class: label_class) do %>
+                    <%= b.check_box(checked: check_box_checked) + b.text %>
+                  <% end %>
                 <% end %>
-              <% end %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
     <div class="form-group">
       <%= submit_tag 'Search', class: "btn btn-green btn-success btn-lg" %>
     </div>

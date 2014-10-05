@@ -6,6 +6,16 @@
     <%= javascript_include_tag "application-public", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
   </head>
+  <style>
+      .nav-pills > li.active > a, .nav-pills > li.active > a:focus,.nav-pills > li.active > a:hover{
+          background-color: white;
+
+      }
+      .nav-pills > li > a:hover{
+          background-color: white;
+          border: 1px solid #ccc;
+      }
+  </style>
   <body style="background-image:image_path('background.png');">
     <div class="navbar navbar-inverse navbar-fixed-top "  id="topBar" style="" role="navigation">
       <a href="#" style="" class="btn btn-success btn-green side-survey-btn-inactive" id="side-survey-btn">
@@ -18,12 +28,13 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" id="site-title" href="/">Cousin Website</a>
+        <a class="navbar-brand" id="site-title" href="/">Program Pointer</a>
         <a class="navbar-brand" id="site-title-img" href="/"><%= image_tag 'rsz_3home-img.png' %></a>        
       </div>
 
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right ul-home-menu">
+          <!-- 
           <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">All resources</a>
           <ul class="dropdown-menu">
@@ -33,6 +44,7 @@
             <li><a href="#">...</a></li>
           </ul>
           </li>            
+          -->
           <li><a href="/submit">Get listed</a></li>
         </ul>
       </div>

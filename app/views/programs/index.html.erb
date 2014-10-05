@@ -1,8 +1,79 @@
 <%= render 'search' %>
-<div class="container-fluid wrapper">
-  <div class="row" style="padding-left: 30px;padding-right: 30px">
-    <div id='results' class="col-md-10 col-md-offset-1 ">
-      <%= render 'results' %>
+<div class="container-fluid" style="margin-top: 50px;">
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table" style="height: 100%">
+        <tr style="background-color: transparent;height: 100%">
+          <td width="550" class="survey" style="height: 100%;">
+            <div class="col-md-12" style="height: 100%;background-color: #44BBFF; border: 0px solid red;padding: 10px">
+              <%= form_tag '/search', :method => :get, remote: true do %>
+                <div class="panel-group" id="accordion">
+                  <% Question.all.each do |question| %>
+                    <div class="panel panel-default">
+                      <div class="panel-heading survey-box" target="<%= "collapse" + question.id.to_s %>">
+                        <a data-toggle="collapse" data-parent="#accordion" href="<%= "#collapse" + question.id.to_s %>">
+                          <%= question.question %>
+                        </a>
+                      </div>
+                      <div id="<%= "collapse" + question.id.to_s %>" class="panel-collapse collapse">
+                        <div class="panel-body ">
+                          <div class="" data-toggle="buttons">
+                            <%= collection_check_boxes :question, question.id, question.answers, :id, :answer, :include_hidden => false do |b| %>
+                              <%
+                                label_class = "btn-block btn btn-lg btn-default label-choice"
+                                check_box_checked = false
+                                unless @answer_ids.nil?
+                                  if @answer_ids.include? b.value
+                                    label_class = "btn-block btn btn-lg btn-default active-label label-choice-active"
+                                    check_box_checked = true
+                                  end
+                                end %>
+                                <div class="row" style="margin-bottom: 10px;">
+                                  <div class="col-xs-11">
+                                    <div class="row">
+                                      <div class="btn-group btn-group-justified" data-toggle="buttons">
+                                        <%= b.label(:"data-value" => b.value, class: label_class) do %>
+                                          <%= b.check_box(checked: check_box_checked) + b.text %>
+                                        <% end %>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-xs-1">
+                                    <div class="row">
+                                      <button class="btn btn-lg btn-link btn-block answer-details-btn-inactive"><strong>?</strong></button>
+                                      <div class="answer-details-box pull-right" style="">
+                                        Buttons in input groups are a bit different 
+                                        and require one extra level of nesting. Instead of 
+                                        .input-group-addon, you'll need to
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              <% end %>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <%= submit_tag 'Search', class: "btn btn-green btn-success btn-lg" %>
+                </div>
+              <% end %>
+            </div>
+          </td>
+          <td>
+            <div class="">
+              <div class="panel-group" id="accordion2">
+                <div id='results'>
+                  <%= render 'results' %>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
     </div>
   </div>
   <br/>

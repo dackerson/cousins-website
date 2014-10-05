@@ -6,11 +6,29 @@
     <%= javascript_include_tag "application-admin", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
   </head>
+  <style>
+    .nav-pills > li.active > a, .nav-pills > li.active > a:focus,.nav-pills > li.active > a:hover{
+      background-color: white;
+      border: 1px solid #ccc;
+      box-shadow: 2px 1px 2px 1px #eee;
+    }
+    .nav-pills > li > a:hover{
+      background-color: white;
+      border: 1px solid #ccc;
+    }
+  </style>
   <body style="background-image:image_path('background.png');">
     <div class="navbar navbar-inverse navbar-fixed-top "  id="" style="" role="navigation">
-      <span class="navbar-brand" id="site-title">Cousin Website Admin</span>
+      <span class="navbar-brand" id="site-title">Program Pointer Admin</span>
       <%= image_tag 'rsz_3home-img.png', class: "side-survey-btn-inactive", id: "side-survey-btn" %>
-      <!--img class="side-survey-btn-inactive" id="side-survey-btn" src="img/rsz_admin-menu.png" alt=""/-->
+    </div>
+
+    <div id="side-survey">
+      <ul>
+        <li><a href="adminhome.php">Listing</a></li>
+        <li><a href="newprogram.php">New program</a></li>
+        <li><a href="#">Log Out</a></li>
+      </ul>
     </div>
 
     <%= yield %>

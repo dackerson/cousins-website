@@ -1,60 +1,100 @@
-<div class="container-fluid wrapper">    
+<div class="container wrapper">    
   <div class="row">
-    <div class="col-md-10 col-md-offset-1" style="margin-top: 10px;">
-      <div class="row">
-        <%= form_for(@program) do |f| %>
-          <% if @program.errors.any? %>
-            <div id="error_explanation">
-              <h2><%= pluralize(@program.errors.count, "error") %> prohibited this program from being saved:</h2>
+    <div class="col-md-12">
+      <%= form_for(@program) do |f| %>
+        <% if @program.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@program.errors.count, "error") %> prohibited this program from being saved:</h2>
 
-              <ul>
-                <% @program.errors.full_messages.each do |msg| %>
-                  <li><%= msg %></li>
-                <% end %>
-              </ul>
-            </div>
-          <% end %>
+            <ul>
+              <% @program.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <!-- Nav tabs -->
+        <ul class="nav  nav-pills" role="tablist">
+          <li class="active"><a style="color:  #66c666;"  id="getlisted-GI" href="#home" role="tab" data-toggle="tab">General Info</a></li>
+          <li><a  style="color: #f7ae11;" href="#profile" id="getlisted-QA" role="tab" data-toggle="tab">Choose your answers</a></li>
+        </ul>
 
-          <div class="col-md-6 intro-text getlisted-general-info">
-            <p id="intro-title-green">General information</p>
-            <div class="form-group">
-              <%= f.text_field :name, class: 'form-control input-lg', placeholder: 'Program/Organization URL' %>
-            </div>
-            <div class="form-group">
-              <%= f.text_field :website, class: 'form-control input-lg', placeholder: 'Website URL' %>
-            </div>
-            <div class="form-group">
-              <%= f.text_field :desc, class: 'form-control input-lg', placeholder: 'Description' %>
+        <!-- Tab panes -->
+        <div class="tab-content" style="padding-top:5px;">
+          <div class="tab-pane active" id="home">
+            <div class="row">
+              <div class="col-md-6 intro-text getlisted-general-info">
+                <p id="intro-title-green">General information</p>
+                <div class="form-group">
+                  <%= f.text_field :name, class: 'form-control input-lg', placeholder: 'Program/Organization URL' %>
+                </div>
+                <div class="form-group">
+                  <%= f.text_field :website, class: 'form-control input-lg', placeholder: 'Website URL' %>
+                </div>
+                <div class="form-group">
+                  <%= f.text_field :desc, class: 'form-control input-lg', placeholder: 'Description' %>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="col-md-6 intro-text"  id="home-survey">
-            <p id="intro-title-orange">Choose your options</p>
-            <% Question.all.each do |question| %>
-              <div class="form-group">
-                <div class="row">
-                  <button type="button" class="btn btn-gray btn-lg btn-block survey-question-inactive"><%= question.question %></button>
-                  <div class="col-md-12">
-                    <div class="row survey-choice-box" >
-                      <div class="" data-toggle="buttons">
+          <div class="tab-pane" id="profile">
+            <div class="panel-group" id="accordion">
+              <% Question.all.each do |question| %>
+                <div class="panel panel-default">
+                  <div class="panel-heading survey-box" target="<%= "collapse" + question.id.to_s %>">
+                    <a data-toggle="collapse" data-parent="#accordion" href="<%= "#collapse" + question.id.to_s %>">
+                      <%= question.question %>
+                    </a>
+                  </div>
+                  <div id="<%= "collapse" + question.id.to_s %>" class="panel-collapse collapse in">
+                    <div class="panel-body home-survey">
+                      <div class="col-lg-12">
                         <%= collection_check_boxes :question, question.id, question.answers, :id, :answer, include_hidden: false do |b| %>
-                          <%= b.label(:"data-value" => b.value, class: "btn-lg btn-block btn label-choice btn-default" ) do %>
-                            <%= b.check_box + b.text %>
-                          <% end %>
+                          <div class="row" style="margin-bottom: 10px;">
+                            <div class="col-xs-10">
+                              <div class="row">
+                                <div class="btn-group btn-group-justified" data-toggle="buttons">
+                                  <%= b.label(:"data-value" => b.value, class: "btn-lg btn-block btn label-choice btn-default" ) do %>
+                                    <%= b.check_box + b.text %>
+                                  <% end %>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-xs-2" style="">
+                              <div class="row">
+                                <button class="btn btn-link btn-block answer-details-btn-inactive"><strong>?</strong></button>
+                                <div class="answer-details-box pull-right" style="">
+                                  <%= answer.desc %>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         <% end %>
+                        <div class="row" style="margin-bottom: 10px;">
+                          <div class="col-xs-10">
+                            <div class="row">
+                              <div class="btn-group btn-group-justified" data-toggle="buttons">
+                                <label class="btn btn-info btn-block btn-lg selectAll" target="<%= "collapse" + answer.id.to_s + "OneBtn" %>" number="">
+                                  <input type="checkbox" name="language" value='Français'>Select All
+                                </label> 
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            <% end %>
-            <div class="form-group">
-              <div class="row">
-                <%= f.submit class: "btn btn-green btn-success btn-lg" %>
+              <% end %>
+            </div>
+            <div class="row">
+              <div class="col-md-4 col-md-offset-4">
+                <%= f.submit class: "btn btn-green btn-success btn-lg btn-block" %>
               </div>
             </div>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
