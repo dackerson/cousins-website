@@ -1,29 +1,28 @@
-<h1>Listing questions</h1>
-
-<ul>
-  <% @questions.each do |question| %>
-    <li>
-      <%= question.question %>
-      <%= link_to 'Show', question %>
-      <%= link_to 'Edit', edit_question_path(question) %>
-      <%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %>
-      <ul>
-        <% question.answers.each do |answer| %>
+<div class="container-fluid" style="margin-top: 50px;">
+  <ul>
+    <% @questions.each do |question| %>
+      <li>
+        <%= question.question %>
+        <%= link_to 'Show', question %>
+        <%= link_to 'Edit', edit_question_path(question) %>
+        <%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <ul>
+          <% question.answers.each do |answer| %>
+            <li>
+              <%= answer.answer %>
+              <%= link_to 'Show', answer %>
+              <%= link_to 'Edit', edit_answer_path(answer, question_id: question.id.to_s) %>
+              <%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </li>
+          <% end %>
           <li>
-            <%= answer.answer %>
-            <%= link_to 'Show', answer %>
-            <%= link_to 'Edit', edit_answer_path(answer, question_id: question.id.to_s) %>
-            <%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to 'Add Answer', new_answer_path(question_id: question.id.to_s) %>
           </li>
-        <% end %>
-        <li>
-          <%= link_to 'Add Answer', new_answer_path(question_id: question.id.to_s) %>
-        </li>
-      </ul>
+        </ul>
+      </li>
+    <% end %>
+    <li>
+      <%= link_to 'Add Question', new_question_path %>
     </li>
-  <% end %>
-  <li>
-    <%= link_to 'Add Question', new_question_path %>
-  </li>
-</ul>
-
+  </ul>
+</div>

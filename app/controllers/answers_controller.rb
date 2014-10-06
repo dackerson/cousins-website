@@ -6,16 +6,19 @@ class AnswersController < ApplicationController
   # GET /answers.json
   def index
     @answers = Answer.all
+    render layout: 'admin'
   end
 
   # GET /answers/1
   # GET /answers/1.json
   def show
+    render layout: 'admin'
   end
 
   # GET /answers/new
   def new
     @answer = Answer.new
+    render layout: 'admin'
   end
 
   # GET /answers/1/edit
@@ -70,6 +73,6 @@ class AnswersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
-      params.require(:answer).permit(:answer, :question_id)
+      params.require(:answer).permit(:answer, :desc, :question_id)
     end
 end

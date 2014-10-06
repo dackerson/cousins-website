@@ -6,16 +6,19 @@ class QuestionsController < ApplicationController
   # GET /questions.json
   def index
     @questions = Question.all
+    render layout: 'admin'
   end
 
   # GET /questions/1
   # GET /questions/1.json
   def show
+    render layout: 'admin'
   end
 
   # GET /questions/new
   def new
     @question = Question.new
+    render layout: 'admin'
   end
 
   # GET /questions/1/edit

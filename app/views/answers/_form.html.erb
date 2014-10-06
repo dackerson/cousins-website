@@ -12,8 +12,10 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :desc, placeholder: 'Description' %><br>
     <%= f.label :answer %><br>
-    <%= f.text_area :answer %>
+    <%= f.text_area :answer %><br>
   </div>
   <%= f.hidden_field :question_id, :value => params['question_id'].to_i %>
   <div class="actions">
