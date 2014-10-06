@@ -5,13 +5,13 @@
         <div class="panel panel-default">
           <div class="panel-heading survey-box" target="<%= "collapse" + question.id.to_s %>">
             <a data-toggle="collapse" data-parent="#accordion3" href="<%= "#collapseSideSurvey" + question.id.to_s %>">
-              What are you looking for ?
+              <%= question.question %>
             </a>
           </div>
           <div id="<%= "collapseSideSurvey" + question.id.to_s %>" class="panel-collapse collapse in">
             <div class="panel-body ">
               <div class="" data-toggle="buttons">
-                <%= collection_check_boxes :question, question.id, question.answers, :id, :answer, :include_hidden => false do |b| %>
+                <% Answer.where(question_id: question.id).each do |answer| %>
                   <%
                     label_class = "btn-block btn btn-default label-choice"
                     check_box_checked = false
@@ -20,10 +20,14 @@
                         label_class = "btn-block btn btn-default active-label label-choice-active"
                         check_box_checked = true
                       end
-                    end %>
-                  <%= b.label(:"data-value" => b.value, class: label_class) do %>
-                    <%= b.check_box(checked: check_box_checked) + b.text %>
-                  <% end %>
+                    end
+                  %>
+                  <label class="<%= label_class %>" for="side_question_<%= question.id %>_<%= answer.id %>" data-value="<%= answer.id %>">
+                    <input id="side_question_<%= question.id %>_<%= answer.id %>" type="checkbox" value="<%= answer.id %>" name="question[<%= question.id %>][]" <%= if check_box_checked then "checked=\"checked\"" else "" end %>>
+                    <%= answer.answer %>
+                    </input>
+
+                  </label>
                 <% end %>
               </div>
             </div>

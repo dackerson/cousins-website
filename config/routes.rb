@@ -1,8 +1,9 @@
 CousinsWebsite::Application.routes.draw do
 
-  root 'pages#home'
+  root 'programs#index'
 
   get '/search' => 'programs#search'
+  post '/search' => 'programs#search'
 
   get '/submit' => 'programs#submit'
 
