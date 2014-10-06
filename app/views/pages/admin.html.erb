@@ -11,7 +11,7 @@
       <div class="tab-content" style="padding-top:5px;">
         <div class="tab-pane active" id="home">
           <div class="panel-group" id="accordion">
-            <% @programs.each do |program| %>
+            <% @programs.where(published: true).each do |program| %>
               <div class="panel panel-default" style="">
                 <div class="panel-heading" data-target="collapse-btn<%= program.id.to_s %>" style="padding-top: 8px!important; padding-bottom: 8px!important;background-color: white; color: #0099ff;">
                   <div class="row">
@@ -86,7 +86,7 @@
         </div>
         <div class="tab-pane" id="profile">
           <div class="panel-group" id="accordion2">
-            <% @programs.each do |program| %>
+            <% @programs.where(published: false).each do |program| %>
               <div class="panel panel-default" style="">
                 <div class="panel-heading" data-target="collapse-btn<%= program.id.to_s %>" style="padding-top: 8px!important; padding-bottom: 8px!important;background-color: white; color: #0099ff;">
                   <div class="row">
