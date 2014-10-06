@@ -16,7 +16,6 @@
                       </div>
                       <div id="<%= "collapse" + question.id.to_s %>" class="panel-collapse collapse">
                         <div class="panel-body ">
-                          <div class="" data-toggle="buttons">
                             <% Answer.where(question_id: question.id).each do |answer| %>
                               <%
                                 label_class = "btn-block btn btn-lg btn-default label-choice"
@@ -52,7 +51,6 @@
                               </div>
                             <% end %>
                             <input type="hidden" name="question[<%= question.id %>][]"></input>
-                          </div>
                         </div>
                       </div>
                     </div>
