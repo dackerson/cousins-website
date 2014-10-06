@@ -51,11 +51,6 @@ class ProgramsController < ApplicationController
     end
   end
 
-  def submit
-    new
-    render 'new'
-  end
-
   # GET /programs/1
   # GET /programs/1.json
   def show
@@ -67,6 +62,15 @@ class ProgramsController < ApplicationController
     @program = Program.new
   end
 
+  def submit
+    new
+  end
+
+  def admin_submit
+    @admin = true
+    new
+    render layout: 'admin'
+  end
   # GET /programs/1/edit
   def edit
     render layout: 'admin'

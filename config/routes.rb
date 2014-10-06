@@ -6,6 +6,7 @@ CousinsWebsite::Application.routes.draw do
   post '/search' => 'programs#search'
 
   get '/submit' => 'programs#submit'
+  get '/admin_submit' => 'programs#admin_submit'
 
   get '/admin' => 'pages#admin'
 

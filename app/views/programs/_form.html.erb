@@ -82,17 +82,19 @@
                             </div>
                           </div>
                         <% end %>
-                        <div class="row" style="margin-bottom: 10px;">
-                          <div class="col-xs-10">
-                            <div class="row">
-                              <div class="btn-group btn-group-justified" data-toggle="buttons">
-                                <label class="btn btn-info btn-block btn-lg selectAll" target="<%= "collapse" + question.id.to_s + "OneBtn" %>" number="">
-                                  <input type="checkbox">Select All</input>
-                                </label> 
+                        <% if @admin %>
+                          <div class="row" style="margin-bottom: 10px;">
+                            <div class="col-xs-10">
+                              <div class="row">
+                                <div class="btn-group btn-group-justified" data-toggle="buttons">
+                                  <label class="btn btn-info btn-block btn-lg selectAll" target="<%= "collapse" + question.id.to_s + "OneBtn" %>" number="">
+                                    <input type="checkbox">Select All</input>
+                                  </label> 
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
+                        <% end %>
                       </div>
                     </div>
                   </div>
