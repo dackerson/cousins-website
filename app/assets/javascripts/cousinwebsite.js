@@ -9,16 +9,16 @@ $(document).ready(function() {
             }
         });
         if (testEmpty === true) {
-            $("#generalinfo")[0].click();
+            $("#generalinfo").trigger( "click" );
             alert("Please provide missing general information");
         }else{
-            $("#questionanswer")[0].click();
+            $("#questionanswer").trigger( "click" );
         }
     });
     
     $(document).on("click", "#getlisted-GI", function(event) {
        
-            $("#generalinfo")[0].click();
+            $("#generalinfo").trigger( "click" );
     });
 
     $(document).on("click", "#close-survey", function() {
