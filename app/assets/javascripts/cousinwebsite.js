@@ -1,6 +1,6 @@
 $(document).ready(function() {
     
-    $(document).on("click", "#getlisted-QA, #questionanswer", function(event) {
+    $(document).on("click", "#getlisted-QA", function(event) {
         
         var testEmpty = false;
         $('.form-control').each(function(i, el) {
@@ -12,7 +12,7 @@ $(document).ready(function() {
             $("#generalinfo").trigger( "click" );
             alert("Please provide missing general information");
         }else{
-            $("#questionanswer").trigger( "click" );
+            $("#questionanswer").click();
         }
     });
     
