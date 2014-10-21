@@ -1,6 +1,6 @@
 $(document).ready(function() {
     
-    $(document).on("click", "#getlisted-QA, #questionanswer", function(event) {
+    $(document).on("click", "#getlisted-QA", function(event) {
         
         var testEmpty = false;
         $('.form-control').each(function(i, el) {
@@ -9,26 +9,14 @@ $(document).ready(function() {
             }
         });
         if (testEmpty === true) {
-            $("#generalinfo")[0].click();
+            $("#getlisted-GI")[0].click();
             alert("Please provide missing general information");
-        }else{
-            $("#questionanswer")[0].click();
         }
-    });
-    
-    $(document).on("click", "#getlisted-GI", function(event) {
-       
-            $("#generalinfo")[0].click();
     });
 
     $(document).on("click", "#close-survey", function() {
         $("#side-survey").hide("fadeOut");
-        $(this).addClass("side-survey-btn-inactive").removeClass("side-survey-btn-active");        
-        $(".label-choice-active").removeClass("active-label label-choice-active active").addClass("label-choice");
-    });
-    
-    $(document).on("click", "#main-survey", function() {
-        $(".label-choice-active").removeClass("active-label label-choice-active active").addClass("label-choice");
+        $(this).addClass("side-survey-btn-inactive").removeClass("side-survey-btn-active");
     });
 
     $(window).on("resize load", function() {
@@ -73,10 +61,12 @@ $(document).ready(function() {
 
     $(document).on("click", "label.label-choice-active", function() {
         $(this).removeClass("active-label label-choice-active").addClass("label-choice");
+        $('#' + $(this).attr('for')).attr("checked", false);
     });
 
-    $(document).on("click", ".label-choice", function() {
+    $(document).on("click", "label.label-choice", function() {
         $(this).addClass("active-label label-choice-active").removeClass("label-choice");
+        $('#' + $(this).attr('for')).attr("checked", true);
     });
 
     $(document).on("click", ".label-choice-radio", function() {
