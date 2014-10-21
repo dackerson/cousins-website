@@ -1,6 +1,6 @@
 $(document).ready(function() {
     
-    $(document).on("click", "#getlisted-QA", function(event) {
+    $(document).on("click", "#getlisted-QA, #questionanswer", function(event) {
         
         var testEmpty = false;
         $('.form-control').each(function(i, el) {
@@ -9,15 +9,28 @@ $(document).ready(function() {
             }
         });
         if (testEmpty === true) {
-            $("#getlisted-GI")[0].click();
+            $("#generalinfo")[0].click();
             alert("Please provide missing general information");
+        }else{
+            $("#questionanswer")[0].click();
         }
+    });
+    
+    $(document).on("click", "#getlisted-GI", function(event) {
+       
+            $("#generalinfo")[0].click();
     });
 
     $(document).on("click", "#close-survey", function() {
         $("#side-survey").hide("fadeOut");
-        $(this).addClass("side-survey-btn-inactive").removeClass("side-survey-btn-active");
+        $(this).addClass("side-survey-btn-inactive").removeClass("side-survey-btn-active");        
+        $(".label-choice-active").removeClass("active-label label-choice-active active").addClass("label-choice");
     });
+    
+    $(document).on("click", "#main-survey", function() {
+        $(".label-choice-active").removeClass("active-label label-choice-active active").addClass("label-choice");
+    });
+
 
     $(window).on("resize load", function() {
         if ($(window).width() <= 950) {
