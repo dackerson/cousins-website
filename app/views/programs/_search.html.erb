@@ -1,57 +1,42 @@
 <div id="side-survey">
-    <%= form_tag '/search', :method => :get, remote: true do %>
+  <%= form_tag '/search', :method => :get, remote: true do %>
     <div class="panel-group" id="accordion3">
-        <% Question.all.each do |question| %>
+      <% Question.all.each do |question| %>
         <div class="panel panel-default">
-            <div class="panel-heading survey-box" target="<%= "collapse" + question.id.to_s %>">
-                 <a data-toggle="collapse" data-parent="#accordion3" href="<%= "#collapseSideSurvey" + question.id.to_s %>">
-               <%= question.question %>
+          <div class="panel-heading survey-box" target="<%= "collapse" + question.id.to_s %>">
+            <a data-toggle="collapse" data-parent="#accordion3" href="<%= "#collapseSideSurvey" + question.id.to_s %>">
+              <%= question.question %>
             </a>
-        </div>
-        <div id="<%= "collapseSideSurvey" + question.id.to_s %>" class="panel-collapse collapse in">
-             <div class="panel-body ">
+          </div>
+          <div id="<%= "collapseSideSurvey" + question.id.to_s %>" class="panel-collapse collapse in">
+            <div class="panel-body ">
+              <div class="" data-toggle="buttons">
                 <% Answer.where(question_id: question.id).each do |answer| %>
-                <%
-                label_class = "btn btn-lg btn-block label-choice btn-default"
-                check_box_checked = false
-                unless @answer_ids.nil?
-                if @answer_ids.include? b.value
-                label_class = "btn-block btn btn-default active-label label-choice-active"
-                check_box_checked = true
-                end
-                end
-                %>
-                <div class="row" style="margin-bottom: 10px;">
-                    <div class="col-xs-10">
-                        <div class="row" style="padding-left: 5px;">
+                  <%
+                    label_class = "btn-block btn btn-default label-choice"
+                    check_box_checked = false
+                    unless @answer_ids.nil?
+                      if @answer_ids.include? b.value
+                        label_class = "btn-block btn btn-default active-label label-choice-active"
+                        check_box_checked = true
+                      end
+                    end
+                  %>
+                  <label class="<%= label_class %>" for="side_question_<%= question.id %>_<%= answer.id %>" data-value="<%= answer.id %>">
+                    <input id="side_question_<%= question.id %>_<%= answer.id %>" type="checkbox" value="<%= answer.id %>" name="question[<%= question.id %>][]" <%= if check_box_checked then "checked=\"checked\"" else "" end %>>
+                    <%= answer.answer %>
+                    </input>
 
-                            <div class="btn-group btn-group-justified" data-toggle="buttons">
-                                <label class="<%= label_class %>" for="side_question_<%= question.id %>_<%= answer.id %>" data-value="<%= answer.id %>">
-                                    <input id="side_question_<%= question.id %>_<%= answer.id %>" type="checkbox" value="<%= answer.id %>" name="question[<%= question.id %>][]" <%= if check_box_checked then "checked=\"checked\"" else "" end %>>
-                                           <%= answer.answer %>
-                                           </input>
-
-                                </label>
-                            </div> 
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="row" style="padding-left: 10px;">
-                            <a href="#" class="btn btn-link btn-block answer-details-btn-inactive"><strong>?</strong></a>
-                            <div class="answer-details-box pull-right" style="">
-                                Buttons in input groups are a bit different 
-                                and require one extra level of nesting. Instead of 
-                                .input-group-addon, you'll need to
-                            </div>
-                        </div>
-                    </div>
-                </div>                                               
+                  </label>
                 <% end %>
+              </div>
             </div>
+          </div>
         </div>
+      <% end %>
     </div>
-    <% end %>
-</div>
-<%= submit_tag 'Search', class: "btn btn-green btn-success btn-lg btn-block" , id: "close-survey" %>
-<% end %>
+    <div class="form-group">
+      <%= submit_tag 'Search', class: "btn btn-green btn-success btn-lg" %>
+    </div>
+  <% end %>
 </div>
