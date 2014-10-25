@@ -14,14 +14,15 @@
             </div>
             <% end %>
             <!-- Nav tabs -->
-            <ul class="nav  nav-pills" role="tablist">
-                <li class="active"><a style="color:  #66c666;"  id="generalinfo" href="#home" role="tab" data-toggle="tab">General Info</a></li>
-                <li><a  style="color: #f7ae11;" href="#profile" id="questionanswer" role="tab" data-toggle="tab">Choose your answers</a></li>
-            </ul>
+            <!--                    <ul class="nav  nav-pills" role="tablist">
+                                            <li class="active"><a style="color:  #66c666;"  id="generalinfo" href="#home" role="tab" data-toggle="tab">General Info</a></li>
+                                            <li><a  style="color: #f7ae11;" href="#profile" id="questionanswer" role="tab" data-toggle="tab">Choose your answers</a></li>
+                                        </ul>-->
 
             <!-- Tab panes -->
             <div class="tab-content" style="padding-top:5px;">
                 <div class="tab-pane active" id="home">
+                <p id='title-green'>General Information</p>
                     <div class="row">
                         <div class="col-md-12 intro-text getlisted-general-info">
                             <p id="intro-title-green">General information</p>
@@ -53,6 +54,7 @@
                 </div>
                 <div class="tab-pane" id="profile">
                     <div class="panel-group" id="accordion">
+                    <p id='title-orange'>Choose your matching answers</p>
                         <% Question.all.each do |question| %>
                         <div class="panel panel-default">
                             <div class="panel-heading survey-box" target="<%= "collapse" + question.id.to_s %>">
