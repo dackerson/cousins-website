@@ -1,6 +1,16 @@
 $(document).ready(function() {
     
     $(document).on("click", "#getlisted-QA", function(event) {
+        $("#home").hide();
+        $("#profile").show();
+    });
+    
+    $(document).on("click", "#getlisted-GI", function(event) {
+        $("#profile").hide();
+         $("#home").show();
+    });
+    
+   /* $(document).on("click", "#getlisted-QA", function(event) {
         
         var testEmpty = false;
         $('.form-control').each(function(i, el) {
@@ -19,7 +29,7 @@ $(document).ready(function() {
     $(document).on("click", "#getlisted-GI", function(event) {
        
             $("#generalinfo").trigger( "click" );
-    });
+    });*/
 
     $(document).on("click", "#close-survey", function() {
         $("#side-survey").hide("fadeOut");
