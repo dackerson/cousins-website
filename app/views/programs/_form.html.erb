@@ -61,7 +61,7 @@
                                <%= question.question %>
                             </a>
                         </div>
-                        <div id="<%= "collapse" + question.id.to_s %>" class="panel-collapse collapse in">
+                        <div id="<%= "collapse" + question.id.to_s %>" class="panel-collapse collapse">
                              <div class="panel-body home-survey">
                                 <div class="col-lg-12">
                                     <% Answer.where(question_id: question.id).each do |answer| %>
