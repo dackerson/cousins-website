@@ -8,6 +8,16 @@ body{
     margin-top: 70px;
 }
 
+#title-green{
+    font-size: 1.8em;
+    color: #66c666;   
+}
+
+#title-orange{
+    font-size: 1.8em;
+    color: #f7ae11;  
+}
+
 .btn-gray{
     background: -moz-linear-gradient(top, #fff 40%,#eee 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(40%,#fff),color-stop(100%,#eee)); /* Chrome,Safari4+ */
