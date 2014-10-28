@@ -56,7 +56,7 @@
                     <p id='title-orange'>Choose your matching answers</p>
                         <% Question.all.each do |question| %>
                         <div class="panel panel-default">
-                            <div class="panel-heading survey-box" target="<%= "collapse" + question.id.to_s %>">
+                            <div class="panel-heading survey-box" >
                                  <a data-toggle="collapse" data-parent="#accordion" href="<%= "#collapse" + question.id.to_s %>">
                                <%= question.question %>
                             </a>
