@@ -1,4 +1,13 @@
 $(document).ready(function() {
+    $(document).on("click", "#getlisted-QA", function(event) {
+        $("#home").hide();
+        $("#profile").show();
+    });
+    
+    $(document).on("click", "#getlisted-GI", function(event) {
+        $("#profile").hide();
+         $("#home").show();
+    });
 //    $(document).on("click", "#getlisted-QA", function(event) {
 //
 //        var testEmpty = false;
