@@ -47,8 +47,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-4 col-md-offset-8">                                                   
-                            <button type="button" id="getlisted-QA" style="float: right" class="btn btn-default btn-lg btn-block">Next <%= image_tag "rsz_next.png" %></button>
-
+                            <button id="getlisted-QA" type="button" style="float: right" class="btn btn-default btn-lg btn-block">Next <%= image_tag 'rsz_next.png' %></button>
                         </div>
                     </div>
                 </div>
@@ -57,7 +56,7 @@
                     <p id='title-orange'>Choose your matching answers</p>
                         <% Question.all.each do |question| %>
                         <div class="panel panel-default">
-                            <div class="panel-heading survey-box" >
+                            <div class="panel-heading survey-box" target="<%= "collapse" + question.id.to_s %>">
                                  <a data-toggle="collapse" data-parent="#accordion" href="<%= "#collapse" + question.id.to_s %>">
                                <%= question.question %>
                             </a>
@@ -110,7 +109,8 @@
                 </div>
                 <div class="row">
                     <div class="col-md-4">                                                   
-                        <button  type="button" style="margin-bottom: 10px;" id="getlisted-GI" style="float: left" class="btn btn-default btn-lg btn-block"><%= image_tag "rsz_prev.png" %>Previous</button>
+                        <button  style="margin-bottom: 10px;" type="button" id="getlisted-GI" style="float: left" class="btn btn-default btn-lg btn-block"><%= image_tag 'rsz_prev.png' %>Previous</button>
+
                     </div>
                     <div class="col-md-4 col-md-offset-4">
                         <%= f.submit class: "btn btn-green btn-success btn-lg btn-block" %>
