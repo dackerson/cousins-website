@@ -1,4 +1,11 @@
 $(document).ready(function() {
+    $(document).on("click", ".program-box, .survey-box", function() {
+        $("a[href=#" + $(this).attr("target") + "]")[0].click();
+        $('body,html').animate({
+            scrollTop: $("#side-survey-btn").offset().top
+        }, 500);
+    });
+    
     $(document).on("click", "#getlisted-QA", function(event) {
         $("#home").hide();
         $("#profile").show();
