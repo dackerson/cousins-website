@@ -8,16 +8,6 @@ body{
     margin-top: 70px;
 }
 
-#title-green{
-    font-size: 1.8em;
-    color: #66c666;   
-}
-
-#title-orange{
-    font-size: 1.8em;
-    color: #f7ae11;  
-}
-
 .btn-gray{
     background: -moz-linear-gradient(top, #fff 40%,#eee 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(40%,#fff),color-stop(100%,#eee)); /* Chrome,Safari4+ */
@@ -211,16 +201,15 @@ input{
     border-radius: 0px;
     /*height: 50px;*/
     /*max-height: 100px;*/
-    text-align: center;
+    /*text-align: center;*/
     padding: 15px;
 }
 
 #accordion .panel-default .panel-heading a, #accordion .panel-default .panel-heading a :hover,
 #accordion3 .panel-default .panel-heading a, #accordion3 .panel-default .panel-heading a :hover{
-    color: #f7ae11;
-    font-size: 1.3em;
+/*    font-size: 1.3em;
     font-weight: lighter;
-    text-decoration: none;
+    text-decoration: none;*/
 
 }
 
