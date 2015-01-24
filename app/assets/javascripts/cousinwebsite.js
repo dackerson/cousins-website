@@ -1,8 +1,20 @@
 $(document).ready(function() {
     
-    $(document).on("click", "#getlisted-QA", function(event) {
-        $("#home").hide();
-        $("#profile").show();
+   $(document).on("click", "#getlisted-QA", function(event) {
+
+        var testEmpty = false;
+        $('.form-control').each(function(i, el) {
+            if ($.trim($(el).val()) === '') {
+                testEmpty = true;
+            }
+        });
+
+        if (testEmpty === true) {
+            alert("Please provide missing general information");
+        } else {
+            $("#home").hide();
+            $("#profile").show();
+        }
     });
     
     $(document).on("click", "#getlisted-GI", function(event) {
@@ -10,26 +22,6 @@ $(document).ready(function() {
          $("#home").show();
     });
     
-   /* $(document).on("click", "#getlisted-QA", function(event) {
-        
-        var testEmpty = false;
-        $('.form-control').each(function(i, el) {
-            if ($.trim($(el).val()) === '') {
-                testEmpty = true;
-            }
-        });
-        if (testEmpty === true) {
-            $("#generalinfo").trigger( "click" );
-            alert("Please provide missing general information");
-        }else{
-            $("#questionanswer").click();
-        }
-    });
-    
-    $(document).on("click", "#getlisted-GI", function(event) {
-       
-            $("#generalinfo").trigger( "click" );
-    });*/
 
     $(document).on("click", "#close-survey", function() {
         $("#side-survey").hide("fadeOut");
