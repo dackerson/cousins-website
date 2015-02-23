@@ -58,7 +58,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading survey-box" target="<%= "collapse" + question.id.to_s %>">
                                  <a data-toggle="collapse" data-parent="#accordion" href="<%= "#collapse" + question.id.to_s %>">
-                               <%= question.question %>
+                               <%= question.question_get_listed %>
                             </a>
                         </div>
                         <div id="<%= "collapse" + question.id.to_s %>" class="panel-collapse collapse">
