@@ -124,7 +124,7 @@ class ProgramsController < ApplicationController
   def destroy
     @program.destroy
     respond_to do |format|
-      format.html { redirect_to programs_url }
+      format.html { redirect_to '/admin' }
       format.json { head :no_content }
     end
   end
