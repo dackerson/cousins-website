@@ -6,9 +6,9 @@ class ApplicationController < ActionController::Base
   config.encoding = "utf-8"
 
   def authenticate
-    authenticate_or_request_with_http_basic('asdf') do |user, pass|
+    authenticate_or_request_with_http_basic('Administration') do |user, pass|
       pass_sha1 = Digest::SHA1.hexdigest(pass)
-      user == 'admin' && pass_sha1 == 'd033e22ae348aeb5660fc2140aec35850c4da997'
+      user == 'admin' && pass_sha1 == '59f4a78f1669abaf31f68fc5c300c9e410052503'
     end
   end
 end
