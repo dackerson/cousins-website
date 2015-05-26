@@ -397,3 +397,16 @@ input{
     text-decoration: none;
 
 }
+
+#menu-icon{
+    width: 55px;
+}
+
+.arrow-down{  
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    position: absolute; 
+    border-top: 4px solid #fff;
+    top: 15px;
+    right: 6px;
+}
