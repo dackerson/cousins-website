@@ -264,6 +264,11 @@ button:focus{
     }
 }
 @media screen and (min-width: 451px){
+    
+    .answer{
+        padding-top: 10px;
+    }
+    
     .survey{
         display:none;
     }
@@ -302,17 +307,14 @@ button:focus{
 }
 
 @media screen and (max-width: 450px) {
+    
     .instructions{
         padding: 10px;
     }
-    /*    .summary{
-            font-family: 'Open Sans', sans-serif;
-            font-size: 1.2em;
-            color: white;
-            margin-left: 4.5%;
-            padding-top:2px;
-            padding-bottom:10px;
-        }*/
+    
+    .answer{
+        padding-top: 30px;
+    }
     .answer-details-box{
         margin-left: -293px;
         margin-top: -60px;
@@ -415,13 +417,11 @@ input{
 
 }
 
+
 .arrow-down{  
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
     border-top: 8px solid #f7ae11;
-    margin-top: 30px;
-}
-
-.survey-box{
     position: relative;
+    float: right;
 }
