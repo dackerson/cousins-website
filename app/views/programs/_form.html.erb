@@ -1,26 +1,42 @@
+Skip to content
+This repository  
+Explore
+Gist
+Blog
+Help
+@lucasboko lucasboko
+
+Unwatch 2
+Star 0
+Fork 0
+wallacemccain/cousins-website
+branch: master  cousins-website/app/views/programs/_form.html.erb
+@lucasbokolucasboko on 29 Mar Update _form.html.erb
+2 contributors @dackerson @lucasboko
+RawBlameHistory     147 lines (140 sloc)  8.92 kB
 <div class="container wrapper"> 
     <!-- Instructions for admin side-->
     <div class="col-md-12" style="margin-bottom:10px;color: #666;font-size: 1.1em;border: 1px solid #fff;border-radius: 8px;background-color:white;">
-                <div class="col-md-4">
-                    <ul class="" style="margin: 20px 0;">
-                        <li>Please be specific in regards to your programs. Do not simply select all options to cast a wide net.</li>
+        <div class="col-md-4">
+            <ul class="" style="margin: 20px 0;">
+                <li>Please be specific in regards to your programs. Do not simply select all options to cast a wide net.</li>
 
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <ul class="" style="margin: 20px 0;">
-                        <li>We will not publish organization names, but rather the name of the PROGRAM
-                            that the organization offers. E.g. TME Summer Institute not just UNB or TME.</li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <ul class="" style="margin: 20px 0;">
-                        <li>Once you submit your listing CHANGES CANNOT BE MADE, the post must be
-                            deleted and re-submitted to make any changes.</li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <ul class="" style="margin: 20px 0;">
+                <li>We will not publish organization names, but rather the name of the PROGRAM
+                    that the organization offers. E.g. TME Summer Institute not just UNB or TME.</li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <ul class="" style="margin: 20px 0;">
+                <li>Once you submit your listing CHANGES CANNOT BE MADE, the post must be
+                    deleted and re-submitted to make any changes.</li>
 
-                    </ul>
-                </div>
-            </div>
+            </ul>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-12">
             <%= form_for(@program) do |f| %>
@@ -79,9 +95,18 @@
                         <% Question.all.each do |question| %>
                         <div class="panel panel-default">
                             <div class="panel-heading survey-box" target="<%= "collapse" + question.id.to_s %>">
-                                 <a data-toggle="collapse" data-parent="#accordion" href="<%= "#collapse" + question.id.to_s %>">
-                               <%= question.question_get_listed %>
-                            </a>
+                                 <table style="width: 100%">
+                                    <tr>
+                                        <td >
+                                            <a data-toggle="collapse" data-parent="#accordion" href="<%= "#collapse" + question.id.to_s %>">
+                                               <%= question.question_get_listed %>
+                                        </a>
+                                    </td>
+                                    <td>                                                
+                                        <span class="arrow-down"></span>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                         <div id="<%= "collapse" + question.id.to_s %>" class="panel-collapse collapse">
                              <div class="panel-body home-survey">
@@ -144,3 +169,5 @@
     </div>
 </div>
 </div>
+Status API Training Shop Blog About
+© 2015 GitHub, Inc. Terms Privacy Security Contact
