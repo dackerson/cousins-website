@@ -129,6 +129,7 @@ body{
     color: #f7ae11;  
 }
 
+
 #side-survey-btn{
     position: absolute;
     right:20px;
@@ -195,25 +196,18 @@ input{
 #accordion .panel-default .panel-heading,#accordion3 .panel-default .panel-heading{
     background-color: #fff;
     border-radius: 0px;
-    text-align: center;
+    /*text-align: center;*/
     padding: 15px;
 }
 
+
 .survey-box a, .survey-box a :hover{
     color: #f7ae11!important;
+    /*font-size: 1.3em!important;*/
     font-weight: lighter;
     text-decoration: none;
 
 }
-
-#accordion .panel-default .panel-heading a, #accordion .panel-default .panel-heading a :hover,
-#accordion3 .panel-default .panel-heading a, #accordion3 .panel-default .panel-heading a :hover{
-/*    font-size: 1.3em;
-    font-weight: lighter;
-    text-decoration: none;*/
-
-}
-
 
 .active-label{
     background-color: #f7ae11!important;
@@ -258,7 +252,6 @@ input{
     #accordion .panel-default .panel-heading,#accordion3 .panel-default .panel-heading{
         background-color: #fff;
         border-radius: 0px;
-        text-align: center;
         font-size: 0.9em;
         padding: 8px;
     }
@@ -298,4 +291,18 @@ input{
     }
 
 
+}
+
+
+.arrow-down{  
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #f7ae11;
+    position: relative;
+    margin-top: 30px;
+}
+
+
+.survey-box{
+    position: relative;
 }
