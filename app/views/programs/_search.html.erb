@@ -4,9 +4,18 @@
         <% Question.all.each do |question| %>
         <div class="panel panel-default">
             <div class="panel-heading survey-box" target="<%= "collapse" + question.id.to_s %>">
-                 <a data-toggle="collapse" data-parent="#accordion3" href="<%= "#collapseSideSurvey" + question.id.to_s %>">
-               <%= question.question %>
-            </a>
+                 <table style="width: 100%">
+                    <tr>
+                        <td >                                                           
+                            <a data-toggle="collapse" data-parent="#accordion3" href="<%= "#collapseSideSurvey" + question.id.to_s %>">
+                               <%= question.question %>
+                        </a>
+                    </td>
+                    <td>                                                
+                        <span class="arrow-down"></span>
+                    </td>
+                </tr>
+            </table>                 
         </div>
         <div id="<%= "collapseSideSurvey" + question.id.to_s %>" class="panel-collapse collapse in">
              <div class="panel-body ">
@@ -49,6 +58,6 @@
     </div>
     <% end %>
 </div>
-    <%= submit_tag 'Search', class: "btn btn-green btn-success btn-lg btn-block" , id: "close-survey"%>
+<%= submit_tag 'Search', class: "btn btn-green btn-success btn-lg btn-block" , id: "close-survey"%>
 <% end %>
 </div>
