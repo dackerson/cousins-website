@@ -6,81 +6,90 @@
 
 
 <div class="container-fluid" style="margin-top: 75px;">
-  <div class="row">
-    <div class="col-md-12">
-      <table class="table" style="height: 100%">
-        <tr style="background-color: transparent;height: 100%">
-          <td width="550" class="survey" style="height: 100%;">
-            <div class="col-md-12" style="height: 100%;background-color: #44BBFF; border: 0px solid red;padding: 10px">
-              <%= form_tag '/search', :method => :get, remote: true do %>
-                <div class="panel-group" id="accordion">
-                  <% Question.all.each do |question| %>
-                    <div class="panel panel-default">
-                      <div class="panel-heading survey-box" target="<%= "collapse" + question.id.to_s %>">
-                        <a data-toggle="collapse" data-parent="#accordion" href="<%= "#collapse" + question.id.to_s %>">
-                          <%= question.question %>
-                        </a>
-                      </div>
-                      <div id="<%= "collapse" + question.id.to_s %>" class="panel-collapse collapse">
-                        <div class="panel-body ">
-                            <% Answer.where(question_id: question.id).each do |answer| %>
-                              <%
-                                label_class = "btn-block btn btn-lg btn-default label-choice"
-                                check_box_checked = false
-                                unless @answer_ids.nil?
-                                  if @answer_ids.include? answer.id
-                                    label_class = "btn-block btn btn-lg btn-default active-label label-choice-active"
-                                    check_box_checked = true
-                                  end
-                                end
-                              %>
-                              <div class="row" style="margin-bottom: 10px;">
-                                <div class="col-xs-11">
-                                  <div class="row">
-                                    <div class="btn-group btn-group-justified" data-toggle="buttons">
-                                      <label class="<%= label_class %>" for="question_<%= question.id %>_<%= answer.id %>" data-value="<%= answer.id %>">
-                                        <input id="question_<%= question.id %>_<%= answer.id %>" type="checkbox" value="<%= answer.id %>" name="question[<%= question.id %>][]" <%= if check_box_checked then "checked=\"checked\"" else "" end %>>
-                                        <%= answer.answer %>
-                                        </input>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table" style="height: 100%">
+                <tr style="background-color: transparent;height: 100%">
+                    <td width="550" class="survey" style="height: 100%;">
+                        <div class="col-md-12" style="height: 100%;background-color: #44BBFF; border: 0px solid red;padding: 10px">
+                            <%= form_tag '/search', :method => :get, remote: true do %>
+                            <div class="panel-group" id="accordion">
+                                <% Question.all.each do |question| %>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading survey-box" target="<%= "collapse" + question.id.to_s %>">
+                                         <table style="width: 100%">
+                                            <tr>
+                                                <td >  
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="<%= "#collapse" + question.id.to_s %>">
+                                                       <%= question.question %>
+                                                </a>
+                                            </td>
+                                            <td>                                                
+                                                <span class="arrow-down"></span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div id="<%= "collapse" + question.id.to_s %>" class="panel-collapse collapse">
+                                     <div class="panel-body ">
+                                        <% Answer.where(question_id: question.id).each do |answer| %>
+                                        <%
+                                        label_class = "btn-block btn btn-lg btn-default label-choice"
+                                        check_box_checked = false
+                                        unless @answer_ids.nil?
+                                        if @answer_ids.include? answer.id
+                                        label_class = "btn-block btn btn-lg btn-default active-label label-choice-active"
+                                        check_box_checked = true
+                                        end
+                                        end
+                                        %>
+                                        <div class="row" style="margin-bottom: 10px;">
+                                            <div class="col-xs-11">
+                                                <div class="row">
+                                                    <div class="btn-group btn-group-justified" data-toggle="buttons">
+                                                        <label class="<%= label_class %>" for="question_<%= question.id %>_<%= answer.id %>" data-value="<%= answer.id %>">
+                                                            <input id="question_<%= question.id %>_<%= answer.id %>" type="checkbox" value="<%= answer.id %>" name="question[<%= question.id %>][]" <%= if check_box_checked then "checked=\"checked\"" else "" end %>>
+                                                                   <%= answer.answer %>
+                                                                   </input>
 
-                                      </label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-1">
+                                                <div class="row">
+                                                    <button class="btn btn-lg btn-link btn-block answer-details-btn-inactive"><strong>?</strong></button>
+                                                    <div class="answer-details-box pull-right" style="">
+                                                        <%= answer.desc %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <% end %>
+                                        <input type="hidden" name="question[<%= question.id %>][]"></input>
                                     </div>
-                                  </div>
                                 </div>
-                                <div class="col-xs-1">
-                                  <div class="row">
-                                    <button class="btn btn-lg btn-link btn-block answer-details-btn-inactive"><strong>?</strong></button>
-                                    <div class="answer-details-box pull-right" style="">
-                                      <%= answer.desc %>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
+                            </div>
                             <% end %>
-                            <input type="hidden" name="question[<%= question.id %>][]"></input>
                         </div>
-                      </div>
+                        <div class="form-group">
+                            <%= submit_tag 'Search', id: "main-survey", class: "btn btn-block btn-green btn-success btn-lg" %>
+                        </div>
+                        <% end %>
                     </div>
-                  <% end %>
-                </div>
-                <div class="form-group">
-                  <%= submit_tag 'Search', id: "main-survey", class: "btn btn-block btn-green btn-success btn-lg" %>
-                </div>
-              <% end %>
-            </div>
-          </td>
-          <td>
-            <div class="">
-              <div class="panel-group" id="accordion2">
-                <div id='results'>
-                  <%= render 'results' %>
-                </div>
-              </div>
-            </div>
-          </td>
-        </tr>
-      </table>
+                </td>
+                <td>
+                    <div class="">
+                        <div class="panel-group" id="accordion2">
+                            <div id='results'>
+                                <%= render 'results' %>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
     </div>
-  </div>
-  <br/>
+</div>
+<br/>
 </div>
