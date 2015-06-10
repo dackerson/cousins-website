@@ -6,7 +6,7 @@
           <span class="item-title"><%= program.name %></span>
           <div class="row" style="margin-top:4px;">
             <div class="col-md-6">
-              <a class="btn-link" href="#">                                            
+              <a class="btn-link" href="<%= program.website %>" target="_blank">                                            
                 <%= image_tag 'rsz_website.png' %>
                 <%= program.website %>
               </a>
@@ -26,10 +26,10 @@
               </span>
             </div>
             <div class="col-md-6">
-              <span class="item-details">
+              <a class="btn-link" href="mailto:<%= program.contact_email %>">
                 <%= image_tag 'rsz_email.png' %>
                 <%= program.contact_email %>
-              </span>
+              </a>
             </div>
           </div>
         </div>
