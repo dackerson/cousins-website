@@ -14,7 +14,7 @@
                         <div class="col-md-12" style="height: 100%;background-color: #44BBFF; border: 0px solid red;padding: 10px">
                             <%= form_tag '/search', :method => :get, remote: true do %>
                             <div class="panel-group" id="accordion">
-                                <% Question.all.each do |question| %>
+                                <% Question.all.order(:id).each do |question| %>
                                 <div class="panel panel-default">
                                     <div class="panel-heading survey-box" target="<%= "collapse" + question.id.to_s %>">
                                          <table style="width: 100%">
