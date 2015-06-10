@@ -1,7 +1,7 @@
 <div id="side-survey">
     <%= form_tag '/search', :method => :get, remote: true do %>
     <div class="panel-group" id="accordion3">
-        <% Question.all.each do |question| %>
+        <% Question.all.order(:id).each do |question| %>
         <div class="panel panel-default">
             <div class="panel-heading survey-box" target="<%= "collapse" + question.id.to_s %>">
                  <table style="width: 100%">
