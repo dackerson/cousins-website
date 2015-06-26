@@ -1,5 +1,13 @@
 $(document).ready(function() {
     
+   $(document).ajaxStart(function() {
+       $('#loading-spinner').show();
+   });
+
+   $(document).ajaxComplete(function() {
+       $('#loading-spinner').hide();
+   });
+
    $(document).on("click", "#getlisted-QA", function(event) {
 
         var testEmpty = false;

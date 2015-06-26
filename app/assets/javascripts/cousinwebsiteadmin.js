@@ -1,4 +1,13 @@
 $(document).ready(function() {
+    
+   $(document).ajaxStart(function() {
+       $('#loading-spinner').show();
+   });
+
+   $(document).ajaxComplete(function() {
+       $('#loading-spinner').hide();
+   });
+
     $(document).on("click", ".program-box, .survey-box", function() {
         $("a[href=#" + $(this).attr("target") + "]")[0].click();
         $('body,html').animate({
